@@ -7,6 +7,11 @@ public partial class Player : CharacterBody3D
 	[Export]public float Speed = 10.0f;
 	[Export]public float JumpVelocity = 9.5f;
 	[Export]public float MouseSensitivity = 0.1f;
+    [Export]public float CoyoteTime = 1.0f;
+
+    private bool isCoyote = false;
+
+    private bool isHanging = false;
 
     // neck is basically like a the stick that connects the camera to the player
     private Node3D _neck;
@@ -50,15 +55,33 @@ public partial class Player : CharacterBody3D
 	{
 		Vector3 velocity = Velocity;
 
-		// Add the gravity.
-		if (!IsOnFloor())
+		// Hnadle the coyote time
+		if (!IsOnFloor() && !isCoyote)
 		{
 			velocity += GetGravity() * (float)delta;
 		}
+        else if(!IsOnFloor() && isCoyote)
+        {
+            isHanging = true;
+            CoyoteTime -= (float)delta;
+            if (CoyoteTime <= 0.0f){
+                isCoyote = false;
+                isHanging = false;
+            }
+        }
+        else if(IsOnFloor()){
+            CoyoteTime = 1.0f;
+            isCoyote = true;
+            isHanging = false;
+        }
 
 		// Handle Jump.
-		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
+		if (Input.IsActionJustPressed("ui_accept") && isCoyote)
 		{
+            if(isHanging){
+                GD.Print("jump red");
+            }
+            isCoyote = false;
 			velocity.Y = JumpVelocity;
 		}
 

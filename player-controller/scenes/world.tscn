@@ -18,12 +18,39 @@ mesh = SubResource("BoxMesh_gv5m4")
 shape = SubResource("BoxShape3D_f3sb7")
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="." unique_id=438963889]
-transform = Transform3D(12.525497, -0.25700772, 1.7629162, 3.4089239, 0.94329417, -6.635048, 0.016808927, 0.2101028, 31.94572, 10.287823, 7.047168, -58.415077)
+transform = Transform3D(12.525497, -0.25700772, 1.7629162, 3.4089239, 0.94329417, -6.635048, 0.016808927, 0.2101028, 31.94572, 8.495504, 7.047168, -60.69747)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D3" unique_id=2058671899]
 mesh = SubResource("BoxMesh_gv5m4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3" unique_id=734907381]
+shape = SubResource("BoxShape3D_f3sb7")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="." unique_id=1089500221]
+transform = Transform3D(12.944617, -0.05610411, 1.6228801, 0.7458582, 0.998003, -0.8576527, -0.6243314, 0.029027883, 32.623486, 8.495504, 15.366343, -93.7514)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D4" unique_id=963451829]
+mesh = SubResource("BoxMesh_gv5m4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4" unique_id=1727720901]
+shape = SubResource("BoxShape3D_f3sb7")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="." unique_id=1749024015]
+transform = Transform3D(12.971156, -0.039072707, -0.0826136, 0.49831104, 0.9903335, -4.355252, 0.10010898, 0.13309044, 32.383427, 8.495504, 16.29549, -135.47964)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D5" unique_id=1638438208]
+mesh = SubResource("BoxMesh_gv5m4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D5" unique_id=1430031700]
+shape = SubResource("BoxShape3D_f3sb7")
+
+[node name="StaticBody3D6" type="StaticBody3D" parent="." unique_id=1754902368]
+transform = Transform3D(4.6539555, -0.040052373, -0.08274764, 0.17879035, 1.015164, -4.362318, 0.035918366, 0.1364274, 32.435966, 8.495504, 22.624346, -189.84138)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D6" unique_id=1231556931]
+mesh = SubResource("BoxMesh_gv5m4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D6" unique_id=1269416457]
 shape = SubResource("BoxShape3D_f3sb7")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=1711466428]
