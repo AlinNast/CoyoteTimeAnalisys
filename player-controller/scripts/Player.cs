@@ -26,6 +26,8 @@ public partial class Player : CharacterBody3D
 
     private bool isHanging = false;
 
+    private string sessionFilePath;
+
     // neck is basically like a the stick that connects the camera to the player
     private Node3D _neck;
     private Camera3D _camera;
@@ -38,6 +40,13 @@ public partial class Player : CharacterBody3D
 
         // Captures the mouse so it stays in the center and is invisible
         Input.MouseMode = Input.MouseModeEnum.Captured;
+
+        // Prepare the path for data persistance
+        string sessionTimestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+
+        string relativePath = $"res://data/jump_session_{sessionTimestamp}.json";
+
+        sessionFilePath = ProjectSettings.GlobalizePath(relativePath);
     }
 
     public override void _UnhandledInput(InputEvent @event)
@@ -133,7 +142,24 @@ public partial class Player : CharacterBody3D
 
         telemetryLogs.Add(current);
 
-        GD.Print(location.ToString());
+        SaveCurrentSessionToJson();
+    }
+
+    private void SaveCurrentSessionToJson()
+    {
+        try
+        {
+            // Serialize the full list accumulated so far
+            var options = new JsonSerializerOptions { WriteIndented = true };
+            string jsonString = JsonSerializer.Serialize(telemetryLogs, options);
+
+            // Overwrite the file with the most up-to-date collection
+            File.WriteAllText(sessionFilePath, jsonString);
+        }
+        catch (Exception ex)
+        {
+            GD.PrintErr($"[Telemetry] Failed to write file: {ex.Message}");
+        }
     }
     
 }
