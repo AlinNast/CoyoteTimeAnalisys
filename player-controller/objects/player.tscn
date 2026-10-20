@@ -2,7 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bnmu4bt2ncukh" path="res://scripts/Player.cs" id="1_4flbx"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n72q2"]
+albedo_color = Color(0.73333335, 0, 0, 1)
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fj7yv"]
+material = SubResource("StandardMaterial3D_n72q2")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tlwt5"]
 
