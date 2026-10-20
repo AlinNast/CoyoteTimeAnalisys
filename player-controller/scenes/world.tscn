@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://blrvoe45v1jdn"]
+
+[ext_resource type="PackedScene" uid="uid://b8ep45a6bxmwu" path="res://objects/player.tscn" id="1_nnsk1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gv5m4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f3sb7"]
+
+[node name="World" type="Node3D" unique_id=1981124872]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=805348606]
+transform = Transform3D(12.981108, 0, 0, 0, 1, 0, 0, 0, 32.675083, -1.0699234, 0, 4.369026)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1177406026]
+mesh = SubResource("BoxMesh_gv5m4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=495447743]
+shape = SubResource("BoxShape3D_f3sb7")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="." unique_id=438963889]
+transform = Transform3D(12.525497, -0.25700772, 1.7629162, 3.4089239, 0.94329417, -6.635048, 0.016808927, 0.2101028, 31.94572, 10.287823, 7.047168, -58.415077)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D3" unique_id=2058671899]
+mesh = SubResource("BoxMesh_gv5m4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3" unique_id=734907381]
+shape = SubResource("BoxShape3D_f3sb7")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=1711466428]
+transform = Transform3D(12.393414, 0.18208939, -7.6866126, -2.4319715, 0.9822938, 0, 2.9996562, 0.044072237, 31.758097, -1.0699234, 1.4618378, -27.991684)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2" unique_id=690491780]
+mesh = SubResource("BoxMesh_gv5m4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1276852558]
+shape = SubResource("BoxShape3D_f3sb7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=409073088]
+transform = Transform3D(0.983713, 0.06797949, -0.16639599, 0, 0.92572546, 0.3781963, 0.17974658, -0.37203658, 0.91064817, -25.135988, 8.957585, 0)
+
+[node name="Player" parent="." unique_id=1433559656 instance=ExtResource("1_nnsk1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7157068, 0)
