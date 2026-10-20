@@ -16,13 +16,9 @@ public partial class TelemetryVisualizer : Node3D
         public bool IsHanging { get; set; }
     }
 
-    public override void _Notification(int what){
-		if (what == NotificationSceneInstantiated){
-			VisualizeAllSession();
-		}
-	}
+    
 
-    private void VisualizeAllSession()
+    private void VisualizeAllSessions()
     {
 
 		foreach (Node child in GetChildren())
@@ -87,7 +83,7 @@ public partial class TelemetryVisualizer : Node3D
             Height = 0.6f
         };
         meshInstance.Mesh = sphere;
-
+		meshInstance.Name = "TelemetryMarker";
         //  Create a material for color-coding
         var material = new StandardMaterial3D();
         if (jump.IsHanging)
@@ -109,5 +105,32 @@ public partial class TelemetryVisualizer : Node3D
         // Position the sphere at the recorded coordinates
         meshInstance.GlobalPosition = new Vector3(jump.X, jump.Y, jump.Z);
 
+    }
+
+	// This creates a checkbox in your Inspector panel
+    private bool _loadData = false;
+    [Export]
+    public bool LoadData
+    {
+        get => _loadData;
+        set
+        {
+            _loadData = value;
+            if (_loadData && Engine.IsEditorHint())
+            {
+                VisualizeAllSessions();
+                // Automatically reset the checkbox back to false so you can click it again later
+                _loadData = false; 
+            }
+        }
+    }
+
+    public override void _Ready()
+    {
+        // Still runs automatically if you open the scene in the editor
+        if (Engine.IsEditorHint())
+        {
+            VisualizeAllSessions();
+        }
     }
 }
