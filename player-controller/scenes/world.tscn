@@ -45,7 +45,7 @@ mesh = SubResource("BoxMesh_gv5m4")
 shape = SubResource("BoxShape3D_f3sb7")
 
 [node name="StaticBody3D6" type="StaticBody3D" parent="." unique_id=1754902368]
-transform = Transform3D(4.6539555, -0.040052373, -0.08274764, 0.17879035, 1.015164, -4.362318, 0.035918366, 0.1364274, 32.435966, 8.495504, 22.624346, -189.84138)
+transform = Transform3D(4.6539555, -0.040052373, -0.08274764, 0.17879035, 1.015164, -4.362318, 0.035918366, 0.1364274, 32.435966, 8.495504, 22.624346, -189.22943)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D6" unique_id=1231556931]
 mesh = SubResource("BoxMesh_gv5m4")

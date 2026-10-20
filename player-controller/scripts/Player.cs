@@ -1,8 +1,21 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text.Json; // Built into modern .NET
 
 public partial class Player : CharacterBody3D
 {
+    public class JumpTelemetry
+    {
+        public float X {get; set;}
+        public float Y {get; set;}
+        public float Z {get; set;}
+        public bool IsHanging {get;set;}
+        //public string TimeStamp {get;set;}
+    }
+
+    private List<JumpTelemetry> telemetryLogs = new List<JumpTelemetry>();
 
 	[Export]public float Speed = 10.0f;
 	[Export]public float JumpVelocity = 9.5f;
@@ -78,9 +91,7 @@ public partial class Player : CharacterBody3D
 		// Handle Jump.
 		if (Input.IsActionJustPressed("ui_accept") && isCoyote)
 		{
-            if(isHanging){
-                GD.Print("jump red");
-            }
+            CaptureJumpTelemetry(GlobalPosition, isHanging);
             isCoyote = false;
 			velocity.Y = JumpVelocity;
 		}
@@ -109,5 +120,20 @@ public partial class Player : CharacterBody3D
         Velocity = velocity;
 		MoveAndSlide();
 	}
+
+    private void CaptureJumpTelemetry(Vector3 location, bool isHanging)
+    {
+        JumpTelemetry current = new JumpTelemetry{
+            X = location.X,
+            Y = location.Y,
+            Z = location.Z,
+            IsHanging = isHanging,
+            //TimeStamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")
+        };
+
+        telemetryLogs.Add(current);
+
+        GD.Print(location.ToString());
+    }
     
 }
